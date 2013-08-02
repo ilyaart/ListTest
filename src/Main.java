@@ -16,7 +16,13 @@ public class Main {
             System.out.print(", ");
             n = n.next;
         }
-        System.out.print(n.value);
-    }
+        System.out.println(n.value);
 
+        List.Iterator iter = list.iterator();
+        while (iter.hasNext()) {
+            Node n2 = iter.next();
+
+            System.out.print(n2.value);
+        }
+    }
 }
