@@ -19,29 +19,45 @@ public class List {
     }
 
     public boolean delete(int val) {
-        // while (this.next != null) {
+        boolean wasDeleted = false;
 
-        // }
-        return false;
+        Node cur = head;
+        Node prev = null;
+        while (cur != null && cur.value != val) {
+            prev = cur;
+            cur = cur.next;
+        }
+        if (cur != null) {
+
+            if (cur == head) {
+                head = cur.next;
+            }
+            else {
+                prev.next = cur.next;
+            }
+            if (cur == tail) {
+                tail = prev;
+            }
+            wasDeleted = true;
+
+        }
+        return wasDeleted;
     }
 
     public class Iterator {
-        private Node current = head;
+        private Node next = head;
 
         public boolean hasNext() {
-            return current != null;
+            return next != null;
         }
 
         public Node next() {
-            if (hasNext()) {
-                try {
-                    return current;
-                } finally {
-                    current = current.next;
-                }
-            } else {
-                throw new java.util.NoSuchElementException();
+            Node tmp = null;
+            if (next != null) {
+                tmp = next;
+                next = next.next;
             }
+            return tmp;
         }
     }
 
