@@ -44,6 +44,22 @@ public class List {
         return wasDeleted;
     }
 
+    public void reverse() {
+        Node prevNode = null;
+        Node nextNode = null;
+        if (head == null) {
+            return;
+        }
+        while (true) {
+            nextNode = head.next;
+            head.next = prevNode;
+            prevNode = head;
+            if (nextNode == null)
+                return;
+            head = nextNode;
+        }
+    }
+
     public class Iterator {
         private Node next = head;
 
